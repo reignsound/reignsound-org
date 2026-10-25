@@ -100,3 +100,19 @@
 .provenance-list a{color:#222;text-decoration-color:var(--accent-red)}
 .provenance-list a:hover,.provenance-list a:focus-visible{color:var(--accent-red);text-decoration-color:var(--accent-red)}
 @media(max-width:950px){.provenance{border-top-color:#e2e2e2}}
+
+
+/* Wordmark rendering: use live IBM Plex Sans text on narrow screens.
+   The SVG remains the desktop artwork; keep its native dark fill on the white footer. */
+.footer-wordmark img{filter:none}
+.wordmark-mobile{display:none}
+@media(max-width:620px){
+  .wordmark img,.footer-wordmark img{display:none}
+  .wordmark-mobile{display:inline-flex;align-items:flex-start;white-space:nowrap;font-family:'IBM Plex Sans',Arial,sans-serif;font-size:clamp(13px,4.25vw,17px);font-weight:700;letter-spacing:.005em;line-height:1.15;color:#1a1a1a}
+  .wordmark-mobile .wordmark-name{display:inline}
+  .wordmark-mobile sup{font-size:.42em;line-height:1;margin-left:1px;position:relative;top:-.1em}
+  .wordmark-mobile .wordmark-domain{font-size:.68em;font-weight:600;letter-spacing:0;align-self:center;margin-left:1px}
+  .site-header .wordmark{width:auto;max-width:100%;line-height:1.15}
+  .site-footer .footer-wordmark{width:auto;max-width:100%;line-height:1.15;color:#1a1a1a}
+  .site-footer .footer-wordmark .wordmark-mobile{color:#1a1a1a}
+}
