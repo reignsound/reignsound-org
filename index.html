@@ -108,14 +108,30 @@
       </div>
     </section>
 
-    <section class="support-section" id="support">
-      <div><p class="section-kicker">BUILD WITH US</p><h2>A better world is a shared effort.</h2><p>We are preparing ways to support Reignsound’s mission and the initiatives within its ecosystem.</p></div>
-      <span class="support-note">Contribution options are coming soon.</span>
+    <section class="support-section" id="support" aria-labelledby="support-title">
+      <div class="support-copy">
+        <p class="section-kicker">BUILD WITH US</p>
+        <h2 id="support-title">Join Reignsound.</h2>
+        <p class="support-lede">New ways to contribute to our initiatives, support our work, and grow with Reignsound are on the way.</p>
+        <p class="support-detail">Get notified when new opportunities become available.</p>
+      </div>
+      <div class="signup-panel">
+        <form class="signup-form" id="opportunities-signup">
+          <label class="visually-hidden" for="signup-email">Your email address</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
+          <label class="newsletter-option" for="signup-everything">
+            <input id="signup-everything" name="newsletter" type="checkbox" />
+            <span><strong>Send me everything.</strong><small>Include Reignsound’s newsletter, news, and general updates.</small></span>
+          </label>
+          <button type="submit" disabled aria-disabled="true">Keep me posted <span aria-hidden="true">→</span></button>
+          <p class="signup-status" role="status">Signups are not open just yet. More ways to get involved are on the way.</p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand"><a class="footer-wordmark" href="#top">REIGNSOUND<span>™</span></a><p>A better world is a system, not a single solution.</p></div>
+    <div class="footer-brand"><a class="footer-wordmark" href="#top">REIGNSOUND<span>™</span></a><p>An independent enterprise building for a better world.</p></div>
     <nav class="footer-nav" aria-label="Footer navigation"><a href="#top">Home</a><a href="#about">About</a><a href="#focus">Impact</a><a href="#support">Donate</a></nav>
     <div class="provenance"><p class="provenance-title">Documentation Provenance</p><p>Reignsound.org&nbsp; | &nbsp;v1.0.0</p><p>Content: Reignsound&nbsp; | &nbsp;Source: GitHub</p><p>Last Updated: 2026-10-25&nbsp; | &nbsp;Release: MVP</p></div>
   </footer>
