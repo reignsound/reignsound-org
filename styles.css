@@ -102,91 +102,34 @@
 @media(max-width:950px){.provenance{border-top-color:#e2e2e2}}
 
 
-/* Wordmark rendering: use live IBM Plex Sans text on narrow screens.
-   The SVG remains the desktop artwork; keep its native dark fill on the white footer. */
-.footer-wordmark img{filter:none}
-.wordmark-mobile{display:none}
-@media(max-width:620px){
-  .wordmark img,.footer-wordmark img{display:none}
-  .wordmark-mobile{display:inline-flex;align-items:flex-start;white-space:nowrap;font-family:'IBM Plex Sans',Arial,sans-serif;font-size:clamp(13px,4.25vw,17px);font-weight:700;letter-spacing:.005em;line-height:1.15;color:#1a1a1a}
-  .wordmark-mobile .wordmark-name{display:inline}
-  .wordmark-mobile sup{font-size:.42em;line-height:1;margin-left:1px;position:relative;top:-.1em}
-  .wordmark-mobile .wordmark-domain{font-size:.68em;font-weight:600;letter-spacing:0;align-self:center;margin-left:1px}
-  .site-header .wordmark{width:auto;max-width:100%;line-height:1.15}
-  .site-footer .footer-wordmark{width:auto;max-width:100%;line-height:1.15;color:#1a1a1a}
-  .site-footer .footer-wordmark .wordmark-mobile{color:#1a1a1a}
+/* One source of truth: use the authored SVG wordmark at every viewport.
+   Scale the complete artwork rather than approximating its typography in HTML. */
+.wordmark,
+.footer-wordmark{
+  display:block;
+  width:clamp(120px,16vw,190px);
+  max-width:100%;
+  line-height:0;
+  white-space:nowrap;
 }
-
-
-/* Final wordmark cascade fix: the generic .wordmark span rule must not
-   override visibility of the responsive fallback container. */
-.wordmark .wordmark-mobile,
-.footer-wordmark .wordmark-mobile{display:none}
+.wordmark img,
+.footer-wordmark img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:left center;
+  filter:none;
+}
 @media(max-width:620px){
-  .wordmark .wordmark-mobile,
-  .footer-wordmark .wordmark-mobile{
-    display:inline-flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:0;
-    white-space:nowrap;
-    font-family:'IBM Plex Sans',Arial,sans-serif;
-    font-size:clamp(18px,5.3vw,22px);
-    font-weight:700;
-    letter-spacing:0;
-    line-height:1.1;
-    color:#1a1a1a;
-    margin:0;
-  }
-  .wordmark .wordmark-name,
-  .footer-wordmark .wordmark-name{
-    display:inline;
-    font:inherit;
-    letter-spacing:0;
-    margin:0;
-    line-height:inherit;
-  }
-  .wordmark .wordmark-mobile sup,
-  .footer-wordmark .wordmark-mobile sup{
-    display:inline-block;
-    position:relative;
-    top:-.42em;
-    margin:0 1px 0 2px;
-    font-family:'IBM Plex Sans',Arial,sans-serif;
-    font-size:.42em;
-    font-weight:700;
-    line-height:1;
-    vertical-align:baseline;
-  }
-  .wordmark .wordmark-domain,
-  .footer-wordmark .wordmark-domain{
-    display:inline;
-    align-self:auto;
-    margin:0;
-    font-family:'IBM Plex Sans',Arial,sans-serif;
-    font-size:.72em;
-    font-weight:600;
-    letter-spacing:0;
-    line-height:inherit;
-  }
   .site-header .wordmark{
-    display:inline-flex;
-    align-items:center;
+    width:clamp(150px,48vw,190px);
     justify-self:center;
-    width:auto;
-    max-width:100%;
-    min-height:26px;
-    line-height:1.1;
     margin:0;
   }
   .site-footer .footer-wordmark{
-    display:inline-flex;
-    align-items:center;
-    width:auto;
-    max-width:100%;
-    min-height:26px;
-    line-height:1.1;
+    width:clamp(150px,48vw,190px);
     margin:0;
   }
-  .site-footer .footer-wordmark .wordmark-mobile{color:#1a1a1a}
 }
