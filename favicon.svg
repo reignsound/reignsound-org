@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Reignsound Old English R">
   <title>Reignsound</title>
-  <path fill="#b5122b" d="M13 7h24c12 0 18 7 18 17 0 7-3 12-9 15l8 17H42L31 37h-5v19H13V7Zm13 11v9h10c3 0 5-2 5-5s-2-4-5-4H26Z"/>
-  <path fill="#b5122b" d="M8 7h10v5H8zM8 51h10v5H8zM13 7h5v49h-5zM31 37l-5-3 4-5 8 9z"/>
-  <path fill="#b5122b" d="M39 35l5-3 15 24H47L39 35z"/>
+  <path fill="#F47721" d="M13 7h24c12 0 18 7 18 17 0 7-3 12-9 15l8 17H42L31 37h-5v19H13V7Zm13 11v9h10c3 0 5-2 5-5s-2-4-5-4H26Z"/>
+  <path fill="#F47721" d="M8 7h10v5H8zM8 51h10v5H8zM13 7h5v49h-5zM31 37l-5-3 4-5 8 9z"/>
+  <path fill="#F47721" d="M39 35l5-3 15 24H47L39 35z"/>
 </svg>
