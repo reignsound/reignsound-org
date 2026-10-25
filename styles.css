@@ -87,3 +87,16 @@
 }
 
 .site-footer{background:#000}
+
+
+/* White .org footer: match the ecosystem section and iOS browser chrome */
+.site-footer{background:#fff;color:#080808;border-top:1px solid #e7e7e7}
+.footer-brand p{color:#666}
+.footer-nav{color:#454545}
+.footer-nav a:hover,.footer-nav a:focus-visible{color:var(--accent-red);text-decoration-color:var(--accent-red)}
+.provenance{border-color:#e2e2e2;color:#555}
+.provenance-title{color:#080808}
+.provenance-list dt,.provenance-version{color:#777}
+.provenance-list a{color:#222;text-decoration-color:var(--accent-red)}
+.provenance-list a:hover,.provenance-list a:focus-visible{color:var(--accent-red);text-decoration-color:var(--accent-red)}
+@media(max-width:950px){.provenance{border-top-color:#e2e2e2}}
