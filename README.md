@@ -1,6 +1,6 @@
 # Reignsound.org — Homepage MVP
 
-A responsive, static-first homepage implementation based on the approved Reignsound landing-page mockup. Uses the IBM Plex Sans, Serif, and Mono font families and a custom inline SVG landscape so the main illustration remains crisp at all viewport sizes.
+A responsive, static-first homepage implementation based on the approved Reignsound landing-page mockup. Reignsound is positioned as an independent enterprise operating through a conglomeration of brands. Uses the IBM Plex Sans, Serif, and Mono font families and a custom inline SVG landscape so the main illustration remains crisp at all viewport sizes.
 
 ## Preview locally
 
