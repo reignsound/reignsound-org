@@ -137,3 +137,7 @@
 
 /* Inline SVG keeps the wordmark typography tied to the page's IBM Plex Sans font. */
 .wordmark-art{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
+
+
+/* Keep the Join heading punctuation visually quieter than the brand name. */
+.support-section h2 .join-colon{color:#4b5563}
