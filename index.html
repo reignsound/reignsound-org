@@ -146,7 +146,8 @@
               <label class="visually-hidden" for="signup-phone">Phone number (optional)</label>
               <input class="signup-phone" id="signup-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone number (optional)" />
             </div>
-            <button type="button" id="signup-submit" disabled aria-disabled="true">Submit <span aria-hidden="true">→</span></button>
+            <button type="button" id="signup-submit">Submit <span aria-hidden="true">→</span></button>
+            <input type="text" name="website" id="signup-website" class="signup-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <p class="signup-note">* Required fields</p>
           </div>
           <p class="signup-status" id="signup-status" role="status">Email notifications will open when Reignsound’s signup list is ready. Opportunities are in development.</p>
@@ -160,7 +161,13 @@
             const emailSummary = document.getElementById('signup-email-summary');
             const status = document.getElementById('signup-status');
             const firstName = document.getElementById('signup-first-name');
+            const lastName = document.getElementById('signup-last-name');
+            const phone = document.getElementById('signup-phone');
+            const newsletter = document.getElementById('signup-everything');
             const editEmail = document.getElementById('signup-edit-email');
+            const submit = document.getElementById('signup-submit');
+            const honeypot = document.getElementById('signup-website');
+            const endpoint = 'https://xasdgzuogtscoxejwpnz.supabase.co/functions/v1/reignsound-opportunity-signup';
 
             form.addEventListener('submit', (event) => {
               event.preventDefault();
@@ -170,7 +177,7 @@
               nameStage.hidden = false;
               firstName.required = true;
               emailSummary.textContent = email.value.trim();
-              status.textContent = 'The signup system is not connected yet. Your information will not be saved or sent.';
+              status.textContent = 'Add your first name to complete your signup.';
               firstName.focus();
             });
 
@@ -181,6 +188,43 @@
               emailStage.hidden = false;
               status.textContent = 'You can update your email address before continuing.';
               email.focus();
+            });
+
+            submit.addEventListener('click', async () => {
+              if (!email.reportValidity() || !firstName.reportValidity()) return;
+              submit.disabled = true;
+              submit.setAttribute('aria-busy', 'true');
+              submit.innerHTML = 'Submitting…';
+              status.textContent = 'Saving your signup…';
+              try {
+                const response = await fetch(endpoint, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email: email.value.trim(),
+                    first_name: firstName.value.trim(),
+                    last_name: lastName.value.trim(),
+                    phone: phone.value.trim(),
+                    newsletter_opt_in: newsletter.checked,
+                    website: honeypot.value
+                  })
+                });
+                const result = await response.json().catch(() => ({}));
+                if (!response.ok || result.ok !== true) {
+                  throw new Error(result.error || 'We couldn’t save your signup. Please try again.');
+                }
+                form.dataset.stage = 'complete';
+                emailStage.hidden = true;
+                nameStage.hidden = true;
+                status.textContent = 'Thanks for signing up. Your information has been received.';
+              } catch (error) {
+                status.textContent = error instanceof Error
+                  ? error.message
+                  : 'We couldn’t save your signup just now. Please try again.';
+                submit.disabled = false;
+                submit.removeAttribute('aria-busy');
+                submit.innerHTML = 'Submit <span aria-hidden="true">→</span>';
+              }
             });
           })();
         </script>
