@@ -133,3 +133,7 @@
     margin:0;
   }
 }
+
+
+/* Inline SVG keeps the wordmark typography tied to the page's IBM Plex Sans font. */
+.wordmark-art{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
