@@ -53,3 +53,35 @@
 .signup-form button:disabled{cursor:not-allowed;opacity:.55}
 .signup-form .signup-status{font-size:11px;line-height:1.55;color:#5a6c7e;margin:0}
 @media(max-width:420px){.signup-name-fields{grid-template-columns:1fr}}
+
+
+/* Reignsound red accent and responsive navigation refinements */
+:root{--accent-red:#c83e3a}
+.nav-link.active:after{background:var(--accent-red)}
+.primary-button{background:#080808}
+.primary-button:hover,.primary-button:focus-visible{background:var(--accent-red)}
+.signup-form button{background:#080808;transition:background .2s,transform .2s}
+.signup-form button:hover:not(:disabled),.signup-form button:focus-visible:not(:disabled){background:var(--accent-red)}
+.signup-form .signup-edit-email{background:#080808;color:#fff;border-color:#080808;transition:background .2s,border-color .2s}
+.signup-form .signup-edit-email:hover,.signup-form .signup-edit-email:focus-visible{background:var(--accent-red);border-color:var(--accent-red);color:#fff}
+.footer-nav a:hover,.footer-nav a:focus-visible{color:var(--accent-red);text-decoration-color:var(--accent-red)}
+.provenance-list a{text-decoration-color:var(--accent-red)}
+.provenance-list a:hover,.provenance-list a:focus-visible{text-decoration-color:var(--accent-red);color:var(--accent-red)}
+@media(max-width:950px){
+  .site-header nav{flex-wrap:wrap;justify-content:center;row-gap:8px;min-width:0}
+  .nav-link{white-space:nowrap}
+  .nav-link.active:after{left:-7px;right:-7px}
+}
+@media(max-width:620px){
+  .site-header{height:auto;min-height:0;grid-template-columns:1fr;justify-items:center;gap:12px;padding:17px 16px 10px}
+  .wordmark{font-size:18px;line-height:1.25;margin-bottom:1px}
+  .site-header nav{width:100%;max-width:420px;gap:8px 20px;flex-wrap:wrap;justify-content:center;align-content:center}
+  .nav-link{height:auto;min-height:22px;font-size:11px;padding:2px 4px}
+  .nav-link.active:after{bottom:-3px;left:0;right:0;background:var(--accent-red)}
+  .hero{padding-top:148px}
+}
+@media(max-width:380px){
+  .site-header nav{column-gap:15px;row-gap:7px}
+  .nav-link{font-size:10.5px}
+  .hero{padding-top:154px}
+}
