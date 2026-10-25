@@ -118,8 +118,8 @@
       <div class="signup-panel">
         <form class="signup-form" id="opportunities-signup" data-stage="email">
           <div class="signup-email-stage" id="signup-email-stage">
-            <label class="visually-hidden" for="signup-email">Your email address</label>
-            <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
+            <label class="visually-hidden" for="signup-email">Your email address (required)</label>
+            <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="Your email address *" required />
             <label class="newsletter-option" for="signup-everything">
               <input id="signup-everything" name="newsletter" type="checkbox" />
               <span><strong>Send me everything.</strong><small>Include Reignsound’s newsletter, news, and general updates.</small></span>
@@ -127,18 +127,27 @@
             <button type="submit">Keep me posted <span aria-hidden="true">→</span></button>
           </div>
           <div class="signup-name-stage" id="signup-name-stage" hidden>
-            <p class="signup-email-summary">Signing up with <strong id="signup-email-summary"></strong></p>
+            <div class="signup-email-summary">
+              <span>Signing up with</span>
+              <strong id="signup-email-summary"></strong>
+              <button type="button" class="signup-edit-email" id="signup-edit-email">Edit email</button>
+            </div>
             <div class="signup-name-fields">
               <div>
-                <label class="visually-hidden" for="signup-first-name">First name</label>
-                <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name" />
+                <label class="visually-hidden" for="signup-first-name">First name (required)</label>
+                <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name *" required />
               </div>
               <div>
-                <label class="visually-hidden" for="signup-last-name">Last name</label>
-                <input id="signup-last-name" name="last_name" type="text" autocomplete="family-name" placeholder="Last name" />
+                <label class="visually-hidden" for="signup-last-name">Last name (optional)</label>
+                <input id="signup-last-name" name="last_name" type="text" autocomplete="family-name" placeholder="Last name (optional)" />
               </div>
             </div>
+            <div>
+              <label class="visually-hidden" for="signup-phone">Phone number (optional)</label>
+              <input class="signup-phone" id="signup-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone number (optional)" />
+            </div>
             <button type="button" id="signup-submit" disabled aria-disabled="true">Submit <span aria-hidden="true">→</span></button>
+            <p class="signup-note">* Required fields</p>
           </div>
           <p class="signup-status" id="signup-status" role="status">Email notifications will open when Reignsound’s signup list is ready. Opportunities are in development.</p>
         </form>
@@ -150,6 +159,8 @@
             const nameStage = document.getElementById('signup-name-stage');
             const emailSummary = document.getElementById('signup-email-summary');
             const status = document.getElementById('signup-status');
+            const firstName = document.getElementById('signup-first-name');
+            const editEmail = document.getElementById('signup-edit-email');
 
             form.addEventListener('submit', (event) => {
               event.preventDefault();
@@ -158,8 +169,16 @@
               emailStage.hidden = true;
               nameStage.hidden = false;
               emailSummary.textContent = email.value.trim();
-              status.textContent = 'This signup form is not connected yet. Your information will not be saved or sent.';
-              document.getElementById('signup-first-name').focus();
+              status.textContent = 'The signup system is not connected yet. Your information will not be saved or sent.';
+              firstName.focus();
+            });
+
+            editEmail.addEventListener('click', () => {
+              form.dataset.stage = 'email';
+              nameStage.hidden = true;
+              emailStage.hidden = false;
+              status.textContent = 'You can update your email address before continuing.';
+              email.focus();
             });
           })();
         </script>
