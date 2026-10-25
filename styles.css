@@ -141,3 +141,20 @@
 
 /* Keep the Join heading punctuation visually quieter than the brand name. */
 .support-section h2 .join-colon{color:#4b5563}
+
+
+/* Reignsound Color Classification System (RCCS): function, not ownership. */
+.brands-intro>p:last-of-type{max-width:460px}
+.rccs-key{margin-top:18px}
+.rccs-key-title{font:500 9px var(--mono);letter-spacing:.12em;color:#637184;margin:0 0 9px}
+.rccs-key ul{display:flex;flex-wrap:wrap;gap:7px 12px;list-style:none;padding:0;margin:0}
+.rccs-key li{display:flex;align-items:center;gap:6px;font-size:10px;line-height:1.35;color:#344458}
+.rccs-key li span{width:8px;height:8px;border-radius:50%;background:var(--rccs-color);flex:0 0 auto}
+.rccs-orange{--rccs-color:#f47721}.rccs-purple{--rccs-color:#7b2cbf}.rccs-red{--rccs-color:#b5122b}.rccs-green{--rccs-color:#218838}.rccs-mono{--rccs-color:#202124}.rccs-gray{--rccs-color:#737780}.rccs-brown{--rccs-color:#966f43}
+.brand .brand-symbol{transition:background .2s,color .2s}
+.brand-creative .brand-symbol{background:#f2e8fb;color:#7b2cbf}
+.brand-service .brand-symbol{background:#eceef1;color:#737780}
+.brand-external .brand-symbol{background:#fff;color:#202124;border:1px solid #d8dde4}
+.brand-core .brand-symbol{background:#fff0e4;color:#f47721}
+@media(max-width:950px){.rccs-key ul{gap:8px 12px}}
+@media(max-width:620px){.rccs-key{margin-top:15px}.rccs-key li{font-size:10px}}
