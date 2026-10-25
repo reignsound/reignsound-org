@@ -135,7 +135,7 @@
             <div class="signup-name-fields">
               <div>
                 <label class="visually-hidden" for="signup-first-name">First name (required)</label>
-                <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name *" required />
+                <input id="signup-first-name" name="first_name" type="text" autocomplete="given-name" placeholder="First name *" />
               </div>
               <div>
                 <label class="visually-hidden" for="signup-last-name">Last name (optional)</label>
@@ -168,6 +168,7 @@
               form.dataset.stage = 'name';
               emailStage.hidden = true;
               nameStage.hidden = false;
+              firstName.required = true;
               emailSummary.textContent = email.value.trim();
               status.textContent = 'The signup system is not connected yet. Your information will not be saved or sent.';
               firstName.focus();
@@ -176,6 +177,7 @@
             editEmail.addEventListener('click', () => {
               form.dataset.stage = 'email';
               nameStage.hidden = true;
+              firstName.required = false;
               emailStage.hidden = false;
               status.textContent = 'You can update your email address before continuing.';
               email.focus();
