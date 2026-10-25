@@ -78,7 +78,7 @@
       </svg>
     </section>
 
-    <section class="principles" aria-label="Our commitments">
+    <section class="principles" aria-label="Reignsound commitments">
       <article><h2>Global Reach</h2><p>Supporting communities<br /> across the planet.</p></article>
       <article><h2>Lasting Impact</h2><p>Investing in people,<br /> ideas, and solutions.</p></article>
       <article><h2>Trusted Ecosystem</h2><p>A network of brands,<br /> partners, and initiatives.</p></article>
@@ -110,9 +110,9 @@
 
     <section class="support-section" id="support" aria-labelledby="support-title">
       <div class="support-copy">
-        <p class="section-kicker">BUILD WITH US</p>
+        <p class="section-kicker">BUILD WITH REIGNSOUND</p>
         <h2 id="support-title">Join Reignsound.</h2>
-        <p class="support-lede">New ways to contribute to our initiatives, support Reignsound, and grow with Reignsound are on the way.</p>
+        <p class="support-lede">New ways to contribute to Reignsound initiatives, support Reignsound, and grow with Reignsound are on the way.</p>
         <p class="support-detail">Get notified when new opportunities become available.</p>
       </div>
       <div class="signup-panel">
@@ -211,7 +211,7 @@
                 });
                 const result = await response.json().catch(() => ({}));
                 if (!response.ok || result.ok !== true) {
-                  throw new Error(result.error || 'We couldn’t save your signup. Please try again.');
+                  throw new Error(result.error || 'Reignsound couldn’t save your signup. Please try again.');
                 }
                 form.dataset.stage = 'complete';
                 emailStage.hidden = true;
@@ -220,7 +220,7 @@
               } catch (error) {
                 status.textContent = error instanceof Error
                   ? error.message
-                  : 'We couldn’t save your signup just now. Please try again.';
+                  : 'Reignsound couldn’t save your signup just now. Please try again.';
                 submit.disabled = false;
                 submit.removeAttribute('aria-busy');
                 submit.innerHTML = 'Submit <span aria-hidden="true">→</span>';
@@ -239,7 +239,7 @@
       <h2 class="provenance-title" id="provenance-title">Documentation &amp; Technology</h2>
       <dl class="provenance-list">
         <div><dt>Website</dt><dd>reignsound.org</dd></div>
-        <div><dt>Framework</dt><dd>Reignsound Web <span class="provenance-version">v0.1.0 · Pre-release</span></dd></div>
+        <div><dt>Framework</dt><dd>Reignsound Web <span class="provenance-version">Pre-v1 · Framework version not yet formally assigned</span></dd></div>
         <div><dt>Site release</dt><dd>v1.0.0 · MVP</dd></div>
         <div><dt>Content authority</dt><dd>Reignsound</dd></div>
         <div><dt>Source repository</dt><dd><a href="https://github.com/reignsound/reignsound-org" target="_blank" rel="noopener noreferrer">GitHub · reignsound-org</a></dd></div>
