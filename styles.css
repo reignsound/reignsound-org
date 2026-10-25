@@ -15,3 +15,41 @@
 .signup-form button{cursor:pointer;opacity:1}
 .signup-form button:disabled{cursor:not-allowed;opacity:.55}
 @media(max-width:420px){.signup-name-fields{grid-template-columns:1fr}}
+
+/* Refined, consistent signup fields and two-step navigation */
+.signup-form input[type="email"],
+.signup-form input[type="text"],
+.signup-form input[type="tel"]{
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  border:1px solid #cbd7e4;
+  border-radius:10px;
+  background:#fff;
+  padding:0 15px;
+  color:var(--ink);
+  font:400 14px/1.4 var(--sans);
+  box-shadow:0 1px 2px rgba(7,26,58,.035);
+  outline-offset:3px;
+  transition:border-color .16s,box-shadow .16s;
+}
+.signup-form input[type="email"]:focus,
+.signup-form input[type="text"]:focus,
+.signup-form input[type="tel"]:focus{
+  border-color:#7896b6;
+  box-shadow:0 0 0 3px rgba(69,119,169,.12);
+  outline:none;
+}
+.signup-form input::placeholder{color:#77879a;opacity:1}
+.signup-name-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.signup-email-summary{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:center;font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.signup-email-summary>span{grid-column:1/-1}
+.signup-email-summary strong{font-weight:600;color:var(--ink)}
+.signup-form .signup-edit-email{grid-column:2;grid-row:2;min-height:32px;padding:0 12px;border:1px solid #cbd7e4;background:#fff;color:#173657;font-size:12px;cursor:pointer;opacity:1}
+.signup-form .signup-edit-email:hover{background:#f0f5fa}
+.signup-form .signup-note{margin:-6px 0 0;color:#607187;font-size:11px}
+.signup-form button{cursor:pointer;opacity:1}
+.signup-form button:disabled{cursor:not-allowed;opacity:.55}
+.signup-form .signup-status{font-size:11px;line-height:1.55;color:#5a6c7e;margin:0}
+@media(max-width:420px){.signup-name-fields{grid-template-columns:1fr}}
