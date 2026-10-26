@@ -40,7 +40,7 @@ const checks = [
   ["global enterprise positioning in README", /global enterprise/i.test(readme)],
   ["legacy positioning removed from all HTML and Markdown", legacyLocations.length === 0],
   ["canonical homepage URL", /<link rel="canonical" href="https:\/\/reignsound\.org\/"\s*\/>/.test(homepage)],
-  ["IBM Plex typography reference", /IBM Plex Sans/.test(homepage)],
+  ["IBM Plex typography reference", /IBM(?:\+| )Plex(?:\+| )Sans/.test(homepage)],
   ["RCCS section retained", /Reignsound Color Classification System/.test(homepage)],
   ["footer documentation section retained", /Documentation &amp; Technology/.test(homepage)],
   ["static stylesheet linked", /href="styles\.css"/.test(homepage)],
