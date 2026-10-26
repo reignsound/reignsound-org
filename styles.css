@@ -140,7 +140,7 @@
 
 
 /* Keep the Join heading punctuation visually quieter than the brand name. */
-.support-section h2 .join-colon{color:#4b5563}
+.support-section h2 .join-colon{color:#4b5563;font-weight:400}
 
 
 /* Reignsound Color Classification System (RCCS): function, not ownership. */
@@ -175,3 +175,13 @@
 /* Emphasize People as the current priority within People. Planet. Progress. */
 .focus-intro h2 .focus-word-people{font-weight:700}
 .focus-intro h2 .focus-word-secondary{font-weight:600}
+
+
+/* Shared square-rounded geometry for primary actions and ecosystem icons. */
+.primary-button,
+.signup-form button,
+.signup-form .signup-edit-email,
+.focus-icon,
+.brand-symbol{
+  border-radius:12px;
+}
