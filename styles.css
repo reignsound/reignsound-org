@@ -166,3 +166,7 @@
 .site-footer .footer-wordmark .wordmark-art{max-height:34px;filter:none}
 .brand-symbol .monogram-art{display:block;width:29px;height:29px;max-width:100%;max-height:100%;object-fit:contain;object-position:center}
 @media(max-width:620px){.brand-symbol .monogram-art{width:27px;height:27px}}
+
+
+/* Let the brand name carry the visual emphasis in the Join Reignsound heading. */
+.support-section h2 .join-prefix{font-weight:400}
