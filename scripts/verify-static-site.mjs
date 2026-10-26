@@ -35,6 +35,22 @@ const legacyLocations = files.filter((path) => legacyPattern.test(readFileSync(p
 const homepage = existsSync(htmlPath) ? readFileSync(htmlPath, "utf8") : "";
 const readme = existsSync(readmePath) ? readFileSync(readmePath, "utf8") : "";
 
+const sharedFooterPaths = [
+  "index.html",
+  "standards/index.html",
+  "standards/reignsound-voice/index.html",
+  "standards/reignsound-web/index.html",
+];
+const sharedFooterReady = sharedFooterPaths.every((path) => {
+  const html = readFileSync(resolve(root, path), "utf8");
+  return html.includes('data-reignsound-footer-description') &&
+    html.includes('src="/assets/reignsound-site-config.js"');
+});
+const sharedFooterConfig = existsSync(resolve(root, "assets/reignsound-site-config.js")) &&
+  /footerDescription:\\s*"A universal conglomerate building in support of a better world\\."/i.test(
+    readFileSync(resolve(root, "assets/reignsound-site-config.js"), "utf8"),
+  );
+
 const checks = [
   ["global enterprise positioning in homepage", /global enterprise/i.test(homepage)],
   ["global enterprise positioning in README", /global enterprise/i.test(readme)],
@@ -43,6 +59,8 @@ const checks = [
   ["IBM Plex typography reference", /IBM(?:\+| )Plex(?:\+| )Sans/.test(homepage)],
   ["RCCS section retained", /Reignsound Color Classification System/.test(homepage)],
   ["footer documentation section retained", /Documentation &amp; Technology/.test(homepage)],
+  ["shared footer description configured across main and standards pages", sharedFooterReady],
+  ["canonical universal conglomerate footer description", sharedFooterConfig],
   ["static stylesheet linked", /href="styles\.css"/.test(homepage)],
 ];
 
