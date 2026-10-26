@@ -91,11 +91,17 @@ jobs:
             }
           '
 
+      - name: Verify Vercel team authentication
+        run: vercel whoami --scope "$VERCEL_ORG_ID"
+
+      - name: Verify Vercel project access
+        run: vercel project inspect "$VERCEL_PROJECT_ID" --scope "$VERCEL_ORG_ID"
+
       - name: Pull production project configuration
-        run: vercel pull --yes --environment=production
+        run: vercel pull --yes --environment=production --scope "$VERCEL_ORG_ID" --debug
 
       - name: Create production build
-        run: vercel build --prod
+        run: vercel build --prod --scope "$VERCEL_ORG_ID"
 
       - name: Deploy the prebuilt output
-        run: vercel deploy --prebuilt --prod --yes
+        run: vercel deploy --prebuilt --prod --yes --scope "$VERCEL_ORG_ID"
