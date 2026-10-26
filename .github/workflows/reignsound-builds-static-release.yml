@@ -1,0 +1,78 @@
+name: Reignsound Builds — Static Production Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_confirmation:
+        description: "Type DEPLOY to authorize a production deployment from main"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reignsound-org-production-release
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/main' && inputs.release_confirmation == 'DEPLOY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the exact dispatched revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@1e60f620b9541d3fbb3e20b9e7e9f3c5e5f2c5d3 # v4.0.3
+        with:
+          node-version: 22
+
+      - name: Run Reignsound Builds static-site verification
+        run: node scripts/verify-static-site.mjs
+
+  deploy:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && inputs.release_confirmation == 'DEPLOY'
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 20
+    env:
+      VERCEL_ORG_ID: team_obNNdOM8jvVdLORFbQgoPENu
+      VERCEL_PROJECT_ID: prj_x9Bu984hxTP5WAaaoZrZzgOOn33x
+      VERCEL_CLI_VERSION: ${{ vars.VERCEL_CLI_VERSION }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - name: Check release configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${VERCEL_CLI_VERSION:?Set production environment variable VERCEL_CLI_VERSION to a reviewed exact version}"
+          test -n "${VERCEL_TOKEN:?Set VERCEL_TOKEN in the protected production environment}"
+
+      - name: Check out the exact verified revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@1e60f620b9541d3fbb3e20b9e7e9f3c5e5f2c5d3 # v4.0.3
+        with:
+          node-version: 22
+
+      - name: Install reviewed Vercel CLI
+        run: npm install --global "vercel@${VERCEL_CLI_VERSION}"
+
+      - name: Pull production project configuration
+        run: vercel pull --yes --environment=production
+
+      - name: Create production build
+        run: vercel build --prod
+
+      - name: Deploy the prebuilt output
+        run: vercel deploy --prebuilt --prod --yes
