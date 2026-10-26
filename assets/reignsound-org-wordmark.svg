@@ -1,37 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="1200"
-   height="180"
-   viewBox="0 0 317.49999 47.625"
-   version="1.1"
-   id="svg1"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
-  <g
-     id="layer1">
-    <text
-       xml:space="preserve"
-       style="font-size:35.2777px;line-height:0;font-family:Chewy;-inkscape-font-specification:Chewy;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#b9b9b9;stroke:#ffffff;stroke-width:0"
-       x="157.33888"
-       y="32.596634"
-       id="text1"><tspan
-         id="tspan1"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans Bold';fill:#1a1a1a;stroke-width:0"
-         x="157.33888"
-         y="32.596634">REIGNSOUND.org</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.5px;line-height:0;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans Bold';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#1a1a1a;stroke:#ffffff;stroke-width:0"
-       x="252.5"
-       y="20.390619"
-       id="text3"><tspan
-         id="tspan3"
-         style="font-size:14.5px;stroke-width:0"
-         x="252.5"
-         y="20.390619">™</tspan></text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 317.5 47.625" role="img" aria-labelledby="title">
+  <title id="title">REIGNSOUND.org</title>
+  <g fill="#1a1a1a" font-family="'IBM Plex Sans', Arial, sans-serif" font-weight="700">
+    <text x="157.33888" y="32.596634" text-anchor="middle" font-size="35.2777">REIGNSOUND.org</text>
+    <text x="241.5" y="20.390619" text-anchor="middle" font-size="6.4">™</text>
   </g>
 </svg>
