@@ -158,3 +158,11 @@
 .brand-core .brand-symbol{background:#fff0e4;color:#f47721}
 @media(max-width:950px){.rccs-key ul{gap:8px 12px}}
 @media(max-width:620px){.rccs-key{margin-top:15px}.rccs-key li{font-size:10px}}
+
+
+/* Outlined brand assets: preserve their authored geometry at every viewport. */
+.wordmark-art{display:block;width:100%;height:auto;max-width:100%;overflow:visible;object-fit:contain;object-position:left center}
+.site-header .wordmark-art{max-height:38px}
+.site-footer .footer-wordmark .wordmark-art{max-height:34px;filter:invert(1)}
+.brand-symbol .monogram-art{display:block;width:29px;height:29px;max-width:100%;max-height:100%;object-fit:contain;object-position:center}
+@media(max-width:620px){.brand-symbol .monogram-art{width:27px;height:27px}}
