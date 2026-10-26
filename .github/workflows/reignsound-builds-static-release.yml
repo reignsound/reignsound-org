@@ -81,12 +81,14 @@ jobs:
           set -euo pipefail
           RELEASE_DATE="$(date -u +%F)" node --input-type=module -e '
             import { readFileSync, writeFileSync } from "node:fs";
-            const path = "index.html";
-            const html = readFileSync(path, "utf8");
+            const paths = ["index.html", "standards/index.html", "standards/reignsound-voice/index.html", "standards/reignsound-web/index.html"];
             const date = process.env.RELEASE_DATE;
             const pattern = /<time id="release-verified-date" datetime="[^"]*">[^<]*<\/time>/;
-            if (!pattern.test(html)) throw new Error("Footer verification-date element missing");
-            writeFileSync(path, html.replace(pattern, `<time id="release-verified-date" datetime="${date}">${date}</time>`));
+            for (const path of paths) {
+              const html = readFileSync(path, "utf8");
+              if (!pattern.test(html)) throw new Error(`Footer verification-date element missing in ${path}`);
+              writeFileSync(path, html.replace(pattern, `<time id="release-verified-date" datetime="${date}">${date}</time>`));
+            }
           '
 
       - name: Pull production project configuration
