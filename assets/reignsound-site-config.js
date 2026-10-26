@@ -3,7 +3,7 @@
   "use strict";
 
   const config = Object.freeze({
-    footerDescription: "A universal conglomerate building in support of a better world."
+    footerDescription: "A global enterprise building in support of a better world."
   });
 
   function applySharedSiteConfig() {
