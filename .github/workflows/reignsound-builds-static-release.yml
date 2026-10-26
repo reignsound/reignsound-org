@@ -68,6 +68,26 @@ jobs:
       - name: Install reviewed Vercel CLI
         run: npm install --global "vercel@${VERCEL_CLI_VERSION}"
 
+      - name: Link the known Vercel project
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .vercel
+          printf '{"projectId":"%s","orgId":"%s"}\n' "$VERCEL_PROJECT_ID" "$VERCEL_ORG_ID" > .vercel/project.json
+
+      - name: Set footer verification date for this release
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_DATE="$(date -u +%F)" node --input-type=module -e '
+            import { readFileSync, writeFileSync } from "node:fs";
+            const path = "index.html";
+            const html = readFileSync(path, "utf8");
+            const marker = "<!-- RELEASE_VERIFIED_DATE -->";
+            if (!html.includes(marker)) throw new Error("Footer verification-date marker missing");
+            writeFileSync(path, html.replace(marker, process.env.RELEASE_DATE));
+          '
+
       - name: Pull production project configuration
         run: vercel pull --yes --environment=production
 
