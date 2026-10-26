@@ -79,8 +79,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          RELEASE_DATE="$(date -u +%F)"
-          node --input-type=module -e '
+          RELEASE_DATE="$(date -u +%F)" node --input-type=module -e '
             import { readFileSync, writeFileSync } from "node:fs";
             const path = "index.html";
             const html = readFileSync(path, "utf8");
@@ -88,8 +87,6 @@ jobs:
             if (!html.includes(marker)) throw new Error("Footer verification-date marker missing");
             writeFileSync(path, html.replace(marker, process.env.RELEASE_DATE));
           '
-        env:
-          RELEASE_DATE: ${{ env.RELEASE_DATE }}
 
       - name: Pull production project configuration
         run: vercel pull --yes --environment=production
