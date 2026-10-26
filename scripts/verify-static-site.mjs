@@ -48,7 +48,7 @@ const sharedFooterReady = sharedFooterPaths.every((path) => {
 });
 const sharedFooterConfig = existsSync(resolve(root, "assets/reignsound-site-config.js")) &&
   readFileSync(resolve(root, "assets/reignsound-site-config.js"), "utf8").includes(
-    'footerDescription: "A universal conglomerate building in support of a better world."',
+    'footerDescription: "A global enterprise building in support of a better world."',
   );
 
 const checks = [
@@ -60,7 +60,7 @@ const checks = [
   ["RCCS section retained", /Reignsound Color Classification System/.test(homepage)],
   ["footer documentation section retained", /Documentation &amp; Technology/.test(homepage)],
   ["shared footer description configured across main and standards pages", sharedFooterReady],
-  ["canonical universal conglomerate footer description", sharedFooterConfig],
+  ["canonical global enterprise footer description", sharedFooterConfig],
   ["static stylesheet linked", /href="styles\.css"/.test(homepage)],
 ];
 
