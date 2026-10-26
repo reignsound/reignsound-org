@@ -83,9 +83,10 @@ jobs:
             import { readFileSync, writeFileSync } from "node:fs";
             const path = "index.html";
             const html = readFileSync(path, "utf8");
-            const marker = "<!-- RELEASE_VERIFIED_DATE -->";
-            if (!html.includes(marker)) throw new Error("Footer verification-date marker missing");
-            writeFileSync(path, html.replace(marker, process.env.RELEASE_DATE));
+            const date = process.env.RELEASE_DATE;
+            const pattern = /<time id="release-verified-date" datetime="[^"]*">[^<]*<\/time>/;
+            if (!pattern.test(html)) throw new Error("Footer verification-date element missing");
+            writeFileSync(path, html.replace(pattern, `<time id="release-verified-date" datetime="${date}">${date}</time>`));
           '
 
       - name: Pull production project configuration
