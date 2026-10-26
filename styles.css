@@ -140,7 +140,7 @@
 
 
 /* Keep the Join heading punctuation visually quieter than the brand name. */
-.support-section h2 .join-colon{color:#4b5563;font-weight:400}
+.support-section h2 .join-colon{color:#4b5563;font-weight:400!important;font-style:normal}
 
 
 /* Reignsound Color Classification System (RCCS): function, not ownership. */
