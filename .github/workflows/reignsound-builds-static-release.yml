@@ -76,10 +76,13 @@ jobs:
           printf '{"projectId":"%s","orgId":"%s"}\n' "$VERCEL_PROJECT_ID" "$VERCEL_ORG_ID" > .vercel/project.json
 
       - name: Set footer verification date for this release
+        id: stamp_date
         shell: bash
         run: |
           set -euo pipefail
-          RELEASE_DATE="$(date -u +%F)" node --input-type=module -e '
+          RELEASE_DATE="$(date -u +%F)"
+          echo "release_date=$RELEASE_DATE" >> "$GITHUB_OUTPUT"
+          RELEASE_DATE="$RELEASE_DATE" node --input-type=module -e '
             import { readFileSync, writeFileSync } from "node:fs";
             const paths = ["index.html", "standards/index.html", "standards/reignsound-voice/index.html", "standards/reignsound-web/index.html"];
             const date = process.env.RELEASE_DATE;
@@ -105,3 +108,26 @@ jobs:
 
       - name: Deploy the prebuilt output
         run: vercel deploy --prebuilt --prod --yes --scope "$VERCEL_ORG_ID"
+
+      - name: Verify live production pages and release date
+        shell: bash
+        env:
+          RELEASE_DATE: ${{ steps.stamp_date.outputs.release_date }}
+        run: |
+          set -euo pipefail
+          pages=(
+            "https://reignsound.org/"
+            "https://reignsound.org/standards/"
+            "https://reignsound.org/standards/reignsound-voice/"
+            "https://reignsound.org/standards/reignsound-web/"
+          )
+          for url in "${pages[@]}"; do
+            echo "Checking $url"
+            html="$(curl --fail --silent --show-error --location --retry 8 --retry-delay 5 --retry-all-errors "$url")"
+            if ! grep -Fq "<time id=\"release-verified-date\" datetime=\"$RELEASE_DATE\">$RELEASE_DATE</time>" <<< "$html"; then
+              echo "::error::Expected release verification date $RELEASE_DATE was not found at $url"
+              exit 1
+            fi
+            echo "PASS $url reports Last verified $RELEASE_DATE"
+          done
+          echo "Production smoke checks passed for all four public pages."
