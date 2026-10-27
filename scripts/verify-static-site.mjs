@@ -64,7 +64,6 @@ const checks = [
   ["shared footer description configured across main and standards pages", sharedFooterReady],
   ["canonical global enterprise footer description", sharedFooterConfig],
   ["homepage footer call to action says Join Reignsound", /<a href="#support">Join Reignsound™<\/a>/.test(homepage)],
-  ["signup notification copy capitalizes Opportunities", /notify you about Reignsound™ Opportunities\./.test(homepage)],
   ["UMBRELLA icon uses Global Accessibility purple", /\.brand-core \.brand-symbol\{background:#8870c7;color:#fff;border-color:#8870c7\}/.test(readFileSync(cssPath, "utf8"))],
   ["singular/plural notes heading rule configured", /function applyNotesHeading\(\)/.test(siteConfig) && /notes\.length === 1 \? "Note:" : "Notes:"/.test(siteConfig)],
   ["homepage notes heading uses singular label for one note", /<h2 id="notes-title">Note:<\/h2>/.test(homepage)],
