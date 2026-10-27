@@ -68,11 +68,40 @@ jobs:
       - name: Install reviewed Vercel CLI
         run: npm install --global "vercel@${VERCEL_CLI_VERSION}"
 
+      - name: Link the known Vercel project
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .vercel
+          printf '{"projectId":"%s","orgId":"%s"}\n' "$VERCEL_PROJECT_ID" "$VERCEL_ORG_ID" > .vercel/project.json
+
+      - name: Set footer verification date for this release
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_DATE="$(date -u +%F)" node --input-type=module -e '
+            import { readFileSync, writeFileSync } from "node:fs";
+            const paths = ["index.html", "standards/index.html", "standards/reignsound-voice/index.html", "standards/reignsound-web/index.html"];
+            const date = process.env.RELEASE_DATE;
+            const pattern = /<time id="release-verified-date" datetime="[^"]*">[^<]*<\/time>/;
+            for (const path of paths) {
+              const html = readFileSync(path, "utf8");
+              if (!pattern.test(html)) throw new Error(`Footer verification-date element missing in ${path}`);
+              writeFileSync(path, html.replace(pattern, `<time id="release-verified-date" datetime="${date}">${date}</time>`));
+            }
+          '
+
+      - name: Verify Vercel team authentication
+        run: vercel whoami --scope "$VERCEL_ORG_ID"
+
+      - name: Verify Vercel project access
+        run: vercel project inspect "$VERCEL_PROJECT_ID" --scope "$VERCEL_ORG_ID"
+
       - name: Pull production project configuration
-        run: vercel pull --yes --environment=production
+        run: vercel pull --yes --environment=production --scope "$VERCEL_ORG_ID" --debug
 
       - name: Create production build
-        run: vercel build --prod
+        run: vercel build --prod --scope "$VERCEL_ORG_ID"
 
       - name: Deploy the prebuilt output
-        run: vercel deploy --prebuilt --prod --yes
+        run: vercel deploy --prebuilt --prod --yes --scope "$VERCEL_ORG_ID"

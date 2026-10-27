@@ -33,5 +33,11 @@
          style="font-size:14.5px;stroke-width:0;transform:translate(88.375px, 0) scale(0.65, 1)"
          x="252.5"
          y="20.390619">™</tspan></text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 317.5 47.625" role="img" aria-labelledby="title">
+  <title id="title">REIGNSOUND.org</title>
+  <g fill="#1a1a1a" font-family="'IBM Plex Sans', Arial, sans-serif" font-weight="700">
+    <text x="157.33888" y="32.596634" text-anchor="middle" font-size="35.2777">REIGNSOUND.org</text>
+    <text x="241.5" y="20.390619" text-anchor="middle" font-size="6.4">™</text>
   </g>
 </svg>
