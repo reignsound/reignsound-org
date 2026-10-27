@@ -63,6 +63,7 @@ const checks = [
   ["footer documentation section retained", /Documentation &amp; Technology/.test(homepage)],
   ["shared footer description configured across main and standards pages", sharedFooterReady],
   ["canonical global enterprise footer description", sharedFooterConfig],
+  ["homepage footer call to action says Join Reignsound", /<a href="#support">Join Reignsound™<\/a>/.test(homepage)],
   ["singular/plural notes heading rule configured", /function applyNotesHeading\(\)/.test(siteConfig) && /notes\.length === 1 \? "Note:" : "Notes:"/.test(siteConfig)],
   ["homepage notes heading uses singular label for one note", /<h2 id="notes-title">Note:<\/h2>/.test(homepage)],
   ["static stylesheet linked", /href="styles\.css"/.test(homepage)],
