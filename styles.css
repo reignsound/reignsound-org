@@ -205,3 +205,10 @@
 .focus-icon.amber{color:#c83e3a}
 .focus-icon.amber svg circle{stroke:#c83e3a}
 .focus-icon.amber svg path{stroke:#4caf68}
+
+/* Final icon and interaction refinements */
+.focus-icon.amber{color:#fff}
+.focus-icon.amber svg circle,.focus-icon.amber svg path{stroke:#fff}
+.brand-core .brand-symbol{color:#966f43}
+.primary-button:hover,.primary-button:focus-visible{background:#f4c542}
+#opportunities-signup button[type="submit"]:hover:not(:disabled),#opportunities-signup button[type="submit"]:focus-visible:not(:disabled),#signup-submit:hover:not(:disabled),#signup-submit:focus-visible:not(:disabled){background:#218838}
