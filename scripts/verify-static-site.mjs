@@ -48,7 +48,7 @@ const sharedFooterReady = sharedFooterPaths.every((path) => {
 });
 const sharedFooterConfig = existsSync(resolve(root, "assets/reignsound-site-config.js")) &&
   readFileSync(resolve(root, "assets/reignsound-site-config.js"), "utf8").includes(
-    'footerDescription: "A global enterprise building in support of a better world."',
+    'footerDescription: "A global enterprise building in support of a better universe."',
   );
 
 const checks = [
