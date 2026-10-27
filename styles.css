@@ -212,3 +212,10 @@
 .brand-core .brand-symbol{color:#966f43}
 .primary-button:hover,.primary-button:focus-visible{background:#f4c542}
 #opportunities-signup button[type="submit"]:hover:not(:disabled),#opportunities-signup button[type="submit"]:focus-visible:not(:disabled),#signup-submit:hover:not(:disabled),#signup-submit:focus-visible:not(:disabled){background:#218838}
+
+
+/* Final brand treatment and contribution-heading emphasis */
+.brand-core .brand-symbol{background:#717378;color:#fff;border-color:#717378}
+.support-section h2 .join-prefix{font-weight:400}
+.support-section h2 strong{font-weight:700}
+.support-section h2 .support-colon{font-weight:400}
