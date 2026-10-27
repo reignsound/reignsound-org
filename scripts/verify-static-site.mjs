@@ -6,6 +6,7 @@ const root = process.cwd();
 const htmlPath = resolve(root, "index.html");
 const cssPath = resolve(root, "styles.css");
 const readmePath = resolve(root, "README.md");
+const siteConfigPath = resolve(root, "assets/reignsound-site-config.js");
 const failures = [];
 
 for (const [path, label] of [
@@ -34,6 +35,7 @@ const legacyPattern = /\bindependent\s+enterprise\b/i;
 const legacyLocations = files.filter((path) => legacyPattern.test(readFileSync(path, "utf8")));
 const homepage = existsSync(htmlPath) ? readFileSync(htmlPath, "utf8") : "";
 const readme = existsSync(readmePath) ? readFileSync(readmePath, "utf8") : "";
+const siteConfig = existsSync(siteConfigPath) ? readFileSync(siteConfigPath, "utf8") : "";
 
 const sharedFooterPaths = [
   "index.html",
@@ -61,6 +63,8 @@ const checks = [
   ["footer documentation section retained", /Documentation &amp; Technology/.test(homepage)],
   ["shared footer description configured across main and standards pages", sharedFooterReady],
   ["canonical global enterprise footer description", sharedFooterConfig],
+  ["singular/plural notes heading rule configured", /function applyNotesHeading\(\)/.test(siteConfig) && /notes\.length === 1 \? "Note:" : "Notes:"/.test(siteConfig)],
+  ["homepage notes heading uses singular label for one note", /<h2 id="notes-title">Note:<\/h2>/.test(homepage)],
   ["static stylesheet linked", /href="styles\.css"/.test(homepage)],
 ];
 
