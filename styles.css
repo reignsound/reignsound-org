@@ -196,3 +196,8 @@
 .focus-icon.amber{color:#A67C52}
 .focus-icon.amber svg circle{stroke:#A67C52}
 .focus-icon.amber svg path{stroke:#4CAF68}
+
+
+/* Keep the hero quote centered; place its smaller Space Gray UHGC attribution beneath and offset right. */
+.hero-quote-text{position:relative;display:inline-block;padding-bottom:1.35em}
+.hero-quote-attribution{position:absolute;top:calc(100% - 1.25em);left:calc(100% - .25em);display:block;width:max-content;font-size:50%;font-weight:500;letter-spacing:inherit;line-height:1.2;color:#717378;text-transform:uppercase;white-space:nowrap}
