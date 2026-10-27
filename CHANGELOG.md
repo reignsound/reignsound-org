@@ -22,3 +22,11 @@ All notable, intentional changes to the Reignsound.org website are documented he
 - **Affected file:** `styles.css`
 - **Git commit:** [`0081a62`](https://github.com/reignsound/reignsound-org/commit/0081a62a8256de260f91243b91c982ed059923cb)
 - **Status:** Committed to `copy/universal-reach-righteous-reality-icon-inversion` for review; not merged or deployed by this change.
+
+### Principles heading emphasis
+
+- **People. Planet. Progress.:** Shifted the strongest bold emphasis from “People.” to “Progress.”, leaving “People.” and “Planet.” at the regular heading weight. This better expresses Reignsound’s future-forward orientation without changing the wording.
+- **Affected files:** `index.html`, `styles.css`
+- **HTML commit:** [`2f4627f`](https://github.com/reignsound/reignsound-org/commit/2f4627f189cf02053871448503352a4eae521cd8)
+- **CSS commit:** [`670dcc0`](https://github.com/reignsound/reignsound-org/commit/670dcc0061891ac330eb7dcd1bb9a8ed4f863af0)
+- **Status:** Committed to `copy/universal-reach-righteous-reality-icon-inversion` for review; not merged or deployed by these changes.
