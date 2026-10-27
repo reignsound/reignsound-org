@@ -172,9 +172,9 @@
 .support-section h2 .join-prefix{font-weight:400}
 
 
-/* Emphasize People as the current priority within People. Planet. Progress. */
-.focus-intro h2 .focus-word-people{font-weight:900}
-.focus-intro h2 .focus-word-secondary{font-weight:600}
+/* Emphasize Progress to reflect Reignsound's future-forward orientation. */
+.focus-intro h2 .focus-word-people,.focus-intro h2 .focus-word-secondary{font-weight:600}
+.focus-intro h2 .focus-word-progress{font-weight:900}
 
 
 /* Shared square-rounded geometry for primary actions and ecosystem icons. */
