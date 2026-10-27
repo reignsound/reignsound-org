@@ -230,3 +230,8 @@
 /* Distinguish the two signup actions on hover/focus */
 #opportunities-signup button[type="submit"]:hover:not(:disabled),#opportunities-signup button[type="submit"]:focus-visible:not(:disabled){color:#f4c542}
 #signup-submit:hover:not(:disabled),#signup-submit:focus-visible:not(:disabled){color:#000}
+
+
+/* Keep the anti-spam honeypot invisible and honor hidden form stages */
+[hidden]{display:none!important}
+.signup-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
