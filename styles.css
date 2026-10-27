@@ -194,3 +194,5 @@
 
 /* Equity & Opportunity: retain the orange background and use sandalwood brown for its icon only. */
 .focus-icon.amber{color:#A67C52}
+.focus-icon.amber svg circle{stroke:#A67C52}
+.focus-icon.amber svg path{stroke:#4CAF68}
