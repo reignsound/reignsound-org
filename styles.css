@@ -190,3 +190,7 @@
 /* RIGHTEOUS REALITY: white mark on a refined Space Gray background. */
 .brand-external .brand-symbol{background:#717378;color:#fff;border-color:#717378}
 .brand-external .brand-symbol .monogram-art{filter:invert(1)}
+
+
+/* Equity & Opportunity: retain the orange background and use sandalwood brown for its icon only. */
+.focus-icon.amber{color:#A67C52}
